@@ -1,0 +1,32 @@
+-- ui/sidebar.lua
+
+local Sidebar = Instance.new("Frame", Main)
+Sidebar.Size = UDim2.fromOffset(110, Main.Size.Y.Offset - 36)
+Sidebar.Position = UDim2.fromOffset(0, 36)
+Sidebar.BackgroundColor3 = Theme.Panel
+Instance.new("UIStroke", Sidebar).Color = Theme.Stroke
+
+local layout = Instance.new("UIListLayout", Sidebar)
+layout.Padding = UDim.new(0, 6)
+
+local function AddTab(name)
+    local btn = Instance.new("TextButton", Sidebar)
+    btn.Size = UDim2.fromOffset(100, 32)
+    btn.Text = name
+    btn.Font = Theme.Font
+    btn.TextSize = 13
+    btn.TextColor3 = Theme.Text
+    btn.BackgroundColor3 = Theme.Background
+    Instance.new("UICorner", btn).CornerRadius = UDim.new(0, 8)
+
+    btn.MouseButton1Click:Connect(function()
+        SwitchTab(name)
+        Notify("Tab: "..name)
+    end)
+end
+
+-- TAB DEFAULT
+AddTab("Home")
+AddTab("Player")
+AddTab("World")
+AddTab("Property")
