@@ -1,0 +1,46 @@
+-- ui/main.lua
+
+local gui = Instance.new("ScreenGui")
+gui.Name = "RELAX_UI"
+gui.Parent = PlayerGui
+gui.ResetOnSpawn = false
+
+local Main = Instance.new("Frame", gui)
+Main.Size = UDim2.fromOffset(420, 300)
+Main.Position = UDim2.fromScale(0.5, 0.5)
+Main.AnchorPoint = Vector2.new(0.5, 0.5)
+Main.BackgroundColor3 = Theme.Background
+Main.Active = true
+Main.Draggable = true
+
+Instance.new("UICorner", Main).CornerRadius = UDim.new(0, 12)
+Instance.new("UIStroke", Main).Color = Theme.Stroke
+
+-- HEADER
+local Header = Instance.new("Frame", Main)
+Header.Size = UDim2.new(1, 0, 0, 36)
+Header.BackgroundColor3 = Theme.Panel
+
+Instance.new("UICorner", Header).CornerRadius = UDim.new(0, 12)
+
+local Title = Instance.new("TextLabel", Header)
+Title.Size = UDim2.new(1, -60, 1, 0)
+Title.Position = UDim2.fromOffset(10, 0)
+Title.Text = "RELAX HUB — LT2"
+Title.Font = Theme.Font
+Title.TextSize = 14
+Title.TextColor3 = Theme.Text
+Title.BackgroundTransparency = 1
+Title.TextXAlignment = Left
+
+-- CONTENT
+local Content = Instance.new("Frame", Main)
+Content.Size = UDim2.new(1, -10, 1, -50)
+Content.Position = UDim2.fromOffset(5, 45)
+Content.BackgroundColor3 = Theme.Panel
+Instance.new("UICorner", Content).CornerRadius = UDim.new(0, 10)
+
+RegisterTab("Home", Content)
+SwitchTab("Home")
+
+Notify("UI Loaded")
