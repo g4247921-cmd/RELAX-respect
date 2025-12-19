@@ -1,0 +1,17 @@
+-- core/services.lua
+
+Services = setmetatable({}, {
+    __index = function(_, i)
+        return game:GetService(i)
+    end
+})
+
+Players = Services.Players
+Player = Players.LocalPlayer
+PlayerGui = Player:WaitForChild("PlayerGui")
+
+TweenService = Services.TweenService
+RunService = Services.RunService
+UserInputService = Services.UserInputService
+
+print("[CORE] Services Loaded")
