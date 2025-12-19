@@ -1,0 +1,23 @@
+-- core/remotes.lua
+
+Remotes = {}
+
+local RS = Services.ReplicatedStorage
+local Folder = RS:WaitForChild("Remotes", 10)
+
+if not Folder then
+    warn("Remotes folder not found")
+    return
+end
+
+local function get(name)
+    return Folder:WaitForChild(name, 5)
+end
+
+-- LT2 common remotes
+Remotes.RequestLoad = get("RequestLoad")
+Remotes.RequestSave = get("RequestSave")
+Remotes.ClientPurchasedProperty = get("ClientPurchasedProperty")
+Remotes.ClientExpandedProperty = get("ClientExpandedProperty")
+
+print("[CORE] Remotes Loaded")
